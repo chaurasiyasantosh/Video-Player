@@ -1,0 +1,330 @@
+:root {
+  --primary-color: dodgerblue;
+  --font-color: white;
+}
+html {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #e2e0e6;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3E%3Cg fill='%23bfb5cf' fill-opacity='0.38'%3E%3Cpath fill-rule='evenodd' d='M0 0h4v4H0V0zm4 4h4v4H4V4z'/%3E%3C/g%3E%3C/svg%3E");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Helventica, sans-serif;
+}
+.player {
+  max-width: 80vw;
+  min-width: 800px;
+  border: 5px solid black;
+  border-radius: 10px;
+  background: black;
+  cursor: pointer;
+  position: relative;
+}
+.video {
+  border-radius: 5px;
+  width: 100%;
+  height: auto;
+}
+
+
+/* Container */
+
+.show-controls {
+  width: 100%;
+  height: 20%;
+  z-index: 2;
+  position: absolute;
+  bottom: 0;
+  cursor: default;
+}
+.controls-container {
+  
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 95px;
+  margin-top: -95px;
+  background: rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0;
+  transition: all 0.5s ease-out 2s;
+}
+
+.show-controls:hover .controls-container {
+  opacity: 1;
+  transition: all 0.2s ease-out;
+}
+/* Control Group */
+.control-group {
+  display: flex;
+  align-items: center;
+}
+
+/* Controls Left */
+.controls-left .controls-right {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Play Button */
+.play-controls {
+  padding: 10px;
+  cursor: pointer;
+}
+
+#play-btn {
+  font-size: 36px;
+}
+.fa-play:hover,
+.fa-pause:hover {
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+/* Progress Bar */
+.progress-range {
+  height: 8px;
+  width: calc(100% - 30px);
+  background-color: rgba(202, 202, 202, 0.5);
+  margin: 10px 10px auto;
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  cursor: pointer;
+  transition: height 0.1s ease-in-out;
+}
+
+.progress-range:hover {
+  height: 10px;
+}
+
+.progress-bar {
+  background: var(--primary-color);
+  width: 20px;
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+/* Time Container */
+.time {
+  position: relative;
+  color: var(--font-color);
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+/* Time Elapsed */
+.time-elapsed {
+  margin-right: 5px;
+}
+
+/* Time Duration */
+.time-duration {
+  margin-left: 5px;
+}
+
+/* Speed Container */
+.speed {
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+}
+
+/* Playback Rate Select */
+.player-speed {
+  background: transparent;
+  color: var(--font-color);
+
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 16px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+
+.player-speed:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Custom Styling for Select and Option */
+select {
+  background: transparent;
+  
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 18px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+
+select:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+option {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Styling Dropdown Arrow */
+select::-ms-expand {
+  display: none;
+}
+
+select::after {
+  content: "\25BE"; /*Unicode character for downward arrow  */
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 20px;
+  pointer-events: none;
+}
+
+.fas {
+  color: var(--font-color);
+  font-size: 35px;
+}
+.controls-left {
+  display: flex;
+  gap: 10px;
+}
+
+.controls-right {
+  display: flex;
+  gap: 5px;
+}
+
+/* Volume Controls */
+.volume {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.volume-btn {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.volume-range {
+  width: 100px;
+  height: 8px;
+  background-color: rgba(202, 202, 202, 0.5);
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+}
+
+.volume-bar {
+  background: var(--font-color);
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.2s ease-in;
+}
+.volume-bar:hover {
+  background: var(--primary-color);
+}
+
+/* Fullscreen */
+.fullscreen {
+  cursor: pointer;
+  margin-right: 15px;
+  padding-left: 10px;
+}
+.video-fullscreen {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+/* Media queries for small devices */
+@media screen and (max-width: 480px) {
+    .player {
+      min-width: 0;
+      max-width: 90vw;
+    }
+  
+    .controls-container {
+      flex-direction: row;
+      height: auto;
+      justify-content: space-around;
+    }
+  
+    .controls-left,
+    .controls-right {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    /* Adjust icon sizes and margins */
+    .fas {
+      font-size: 28px;
+    }
+  
+    .volume {
+      margin-right: 5px;
+    }
+  
+    .volume-range {
+      width: 60px;
+    }
+  
+    .fullscreen {
+      margin-right: 5px;
+    }
+    .progress-range {
+        margin-right: 10px; /* Adjust this value as needed */
+        height: 6px;
+      }
+      .progress-bar {
+        height: 6px; /* Adjust this value to make the bar thinner */
+      }
+    .control-group{
+        margin: 10px 10px;
+    }
+  
+    /* Additional styles for smaller screens */
+  }
+  
+/* Media queries for medium devices */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .player {
+    min-width: 0;
+    max-width: 85vw;
+  }
+  /* Add any additional styles for medium devices here */
+}
+
+/* Media queries for large devices */
+@media screen and (min-width: 769px) {
+  .player {
+    min-width: 800px;
+    max-width: 80vw;
+  }
+ 
+}
+
